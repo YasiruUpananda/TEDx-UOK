@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { supabase } from '../../api/supabaseClient';
 import { FormInput } from '../../components/forms/FormInput';
 import { FormSelect } from '../../components/forms/FormSelect';
@@ -50,7 +50,7 @@ const redirectToPayHere = (payload: any) => {
 
 
 export const RegistrationPage: React.FC = () => {
-  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<RegistrationFormData>({
     full_name: '',
     email: '',
@@ -173,31 +173,26 @@ export const RegistrationPage: React.FC = () => {
 
       // 1. Calculate Amount based on Ticket Type
       let amount = 0;
-      let ticketName = "";
 
       switch (formData.ticket_type) {
         case 'standard':
           amount = 1000;
-          ticketName = "General Admission";
           break;
         case 'vip':
           amount = 2500;
-          ticketName = "VIP Ticket";
           break;
         case 'student':
           amount = 500;
-          ticketName = "Student Ticket";
           break;
         case 'early_bird':
           amount = 800;
-          ticketName = "Early Bird Ticket";
           break;
         default:
           throw new Error("Invalid Ticket Type");
       }
 
       const currency = "LKR";
-      const formattedAmount = amount.toFixed(2);
+
 
       // 2. Fetch Active Event
       // FIX For "invalid input syntax for type uuid": Do NOT fallback to '1'.
