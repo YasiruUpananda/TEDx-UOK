@@ -71,18 +71,16 @@ serve(async (req) => {
         // Standard PayHere Hash Generation (All Uppercase)
         // hash = strtoupper(md5(merchant_id . order_id . amount . currency . strtoupper(md5(merchant_secret))))
 
-        // TEST: Using RAW Secret instead of Hashed Secret (Fallback method)
-        // const hashedSecret = md5(merchantSecret); 
-        // const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
+        const hashedSecret = md5(merchantSecret); // Inner Hash MUST be Uppercase
+        const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
 
-        const hashString = `${merchantId}${orderId}${amount}${currency}${merchantSecret}`; // RAW SECRET
-
-        console.log("DEBUG: Generating Hash (RAW SECRET VARIANT)");
+        console.log("DEBUG: Generating Hash (Standard Uppercase)");
         console.log("Merchant ID:", merchantId);
         console.log("Order ID:", orderId);
         console.log("Amount:", amount);
         console.log("Currency:", currency);
-        console.log("Secret Length:", merchantSecret.length);
+        console.log("Secret (Masked):", merchantSecret.substring(0, 5) + "...");
+        console.log("Hashed Secret:", hashedSecret);
         console.log("Pre-Hash String:", hashString);
 
         const finalHash = md5(hashString); // Outer Hash MUST be Uppercase
@@ -110,7 +108,7 @@ serve(async (req) => {
             country: "Sri Lanka",
             hash: finalHash,
             // Fix: Toggle based on environment variable (0 = live, 1 = sandbox)
-            sandbox: "1", // Force Sandbox Mode for testing
+            sandbox: "1", // Force Sandbox Mode to "1"
         };
 
         return new Response(JSON.stringify(payload), {
