@@ -62,27 +62,26 @@ serve(async (req) => {
         const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
         const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
-        // Fix: Use simple number formatting. If it's an integer, send without decimals.
-        // PayHere sometimes rejects 2500.00 in the hash.
-        const amount = Number(payment.amount).toString();
+
+        // Fix: Restore standard amount formatting (PayHere requires 2 decimal places usually)
+        const amount = Number(payment.amount).toFixed(2);
         const currency = payment.currency;
 
         const md5 = (content: string) =>
             createHash("md5").update(content).digest("hex").toUpperCase();
 
-        // Standard PayHere Hash Generation (All Uppercase)
-        // hash = strtoupper(md5(merchant_id . order_id . amount . currency . strtoupper(md5(merchant_secret))))
+        // TEST: Using RAW Secret instead of Hashed Secret (Skip inner MD5)
+        // This is often required when the secret is provided in a specific format (like Base64)
+        // Hash = strtoupper(md5(merchant_id . order_id . amount . currency . merchant_secret))
 
-        const hashedSecret = md5(merchantSecret); // Inner Hash MUST be Uppercase
-        const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
+        const hashString = `${merchantId}${orderId}${amount}${currency}${merchantSecret}`;
 
-        console.log("DEBUG: Generating Hash (Standard Uppercase)");
+        console.log("DEBUG: Generating Hash (RAW SECRET VARIANT - No Inner Hash)");
         console.log("Merchant ID:", merchantId);
         console.log("Order ID:", orderId);
         console.log("Amount:", amount);
         console.log("Currency:", currency);
-        console.log("Secret (Masked):", merchantSecret.substring(0, 5) + "...");
-        console.log("Hashed Secret:", hashedSecret);
+        console.log("Secret Length:", merchantSecret.length);
         console.log("Pre-Hash String:", hashString);
 
         const finalHash = md5(hashString); // Outer Hash MUST be Uppercase
