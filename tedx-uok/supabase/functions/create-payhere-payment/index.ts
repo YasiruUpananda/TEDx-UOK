@@ -61,7 +61,7 @@ serve(async (req) => {
         const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
         const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
-        const orderId = payment_id.toString();
+        const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
         const amount = Number(payment.amount).toFixed(2);
         const currency = payment.currency;
 
