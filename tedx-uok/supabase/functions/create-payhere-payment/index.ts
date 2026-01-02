@@ -68,11 +68,13 @@ serve(async (req) => {
         const md5 = (content: string) =>
             createHash("md5").update(content).digest("hex").toUpperCase();
 
-        // User requested lowercase hash for secret
-        const hashedSecret = createHash("md5").update(merchantSecret).digest("hex"); // Removed toUpperCase()
+        // Standard PayHere Hash Generation (All Uppercase)
+        // hash = strtoupper(md5(merchant_id . order_id . amount . currency . strtoupper(md5(merchant_secret))))
+
+        const hashedSecret = md5(merchantSecret); // Inner Hash MUST be Uppercase
         const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
 
-        console.log("DEBUG: Generating Hash");
+        console.log("DEBUG: Generating Hash (Standard Uppercase)");
         console.log("Merchant ID:", merchantId);
         console.log("Order ID:", orderId);
         console.log("Amount:", amount);
@@ -81,7 +83,7 @@ serve(async (req) => {
         console.log("Hashed Secret:", hashedSecret);
         console.log("Pre-Hash String:", hashString);
 
-        const finalHash = md5(hashString);
+        const finalHash = md5(hashString); // Outer Hash MUST be Uppercase
 
         const splitName = registration.full_name.split(" ");
         const firstName = splitName[0];
@@ -106,7 +108,7 @@ serve(async (req) => {
             country: "Sri Lanka",
             hash: finalHash,
             // Fix: Toggle based on environment variable (0 = live, 1 = sandbox)
-            sandbox: Deno.env.get("PAYHERE_IS_SANDBOX") === "0" ? "0" : "1",
+            sandbox: "1", // Force Sandbox Mode for testing
         };
 
         return new Response(JSON.stringify(payload), {
