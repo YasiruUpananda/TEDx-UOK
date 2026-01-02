@@ -91,9 +91,9 @@ serve(async (req) => {
 
         const payload = {
             merchant_id: merchantId,
-            // Fix: Use dynamic origin so it works on any Vercel Preview URL or Custom Domain
-            return_url: `${req.headers.get("origin")}/payment/success`,
-            cancel_url: `${req.headers.get("origin")}/payment/cancel`,
+            // Fix: Hardcode exact domain from PayHere Sandbox App to prevent "Unauthorized" Origin mismatch
+            return_url: `https://te-dx-es63ww1qq-yasiru-s-projects.vercel.app/payment/success`,
+            cancel_url: `https://te-dx-es63ww1qq-yasiru-s-projects.vercel.app/payment/cancel`,
             notify_url: webhookUrl,
             order_id: orderId,
             items: "TEDx Ticket Enrollment",
