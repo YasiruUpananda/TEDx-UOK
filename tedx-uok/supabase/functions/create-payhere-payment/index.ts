@@ -71,16 +71,18 @@ serve(async (req) => {
         // Standard PayHere Hash Generation (All Uppercase)
         // hash = strtoupper(md5(merchant_id . order_id . amount . currency . strtoupper(md5(merchant_secret))))
 
-        const hashedSecret = md5(merchantSecret); // Inner Hash MUST be Uppercase
-        const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
+        // TEST: Using RAW Secret instead of Hashed Secret (Fallback method)
+        // const hashedSecret = md5(merchantSecret); 
+        // const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
 
-        console.log("DEBUG: Generating Hash (Standard Uppercase)");
+        const hashString = `${merchantId}${orderId}${amount}${currency}${merchantSecret}`; // RAW SECRET
+
+        console.log("DEBUG: Generating Hash (RAW SECRET VARIANT)");
         console.log("Merchant ID:", merchantId);
         console.log("Order ID:", orderId);
         console.log("Amount:", amount);
         console.log("Currency:", currency);
-        console.log("Secret (Masked):", merchantSecret.substring(0, 5) + "...");
-        console.log("Hashed Secret:", hashedSecret);
+        console.log("Secret Length:", merchantSecret.length);
         console.log("Pre-Hash String:", hashString);
 
         const finalHash = md5(hashString); // Outer Hash MUST be Uppercase
