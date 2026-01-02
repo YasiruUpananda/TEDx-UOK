@@ -50,8 +50,8 @@ serve(async (req) => {
             throw new Error(`Registration not found: ${regError?.message}`);
         }
 
-        const merchantId = Deno.env.get("PAYHERE_MERCHANT_ID");
-        const merchantSecret = Deno.env.get("PAYHERE_MERCHANT_SECRET");
+        const merchantId = Deno.env.get("PAYHERE_MERCHANT_ID")?.trim();
+        const merchantSecret = Deno.env.get("PAYHERE_MERCHANT_SECRET")?.trim();
 
         if (!merchantId || !merchantSecret) {
             throw new Error("Server Misconfiguration: Missing PayHere Secrets");
