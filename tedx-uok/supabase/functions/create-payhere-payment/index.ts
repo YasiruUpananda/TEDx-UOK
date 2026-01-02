@@ -68,7 +68,8 @@ serve(async (req) => {
         const md5 = (content: string) =>
             createHash("md5").update(content).digest("hex").toUpperCase();
 
-        const hashedSecret = md5(merchantSecret);
+        // User requested lowercase hash for secret
+        const hashedSecret = createHash("md5").update(merchantSecret).digest("hex"); // Removed toUpperCase()
         const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
 
         console.log("DEBUG: Generating Hash");
