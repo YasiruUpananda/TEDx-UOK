@@ -50,10 +50,8 @@ serve(async (req) => {
             throw new Error(`Registration not found: ${regError?.message}`);
         }
 
-        // DEBUG SCRIPT: USING PUBLIC PAYHERE SANDBOX CREDENTIALS
-        // This is to verify if the code works with known-good credentials.
-        const merchantId = "1211149"; // Public Sandbox ID
-        const merchantSecret = "4b8f211332e14f018d5214633d969796"; // Public Sandbox Secret
+        const merchantId = Deno.env.get("PAYHERE_MERCHANT_ID")?.trim();
+        const merchantSecret = Deno.env.get("PAYHERE_MERCHANT_SECRET")?.trim();
 
         if (!merchantId || !merchantSecret) {
             throw new Error("Server Misconfiguration: Missing PayHere Secrets");
@@ -63,8 +61,7 @@ serve(async (req) => {
         const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
         const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
-        // Use a simple, short Order ID for testing
-        const orderId = payment_id.toString().replace(/-/g, "").substring(0, 20);
+        const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
 
         const amount = Number(payment.amount).toFixed(2);
         const currency = payment.currency;
@@ -72,13 +69,13 @@ serve(async (req) => {
         const md5 = (content: string) =>
             createHash("md5").update(content).digest("hex").toUpperCase();
 
-        // Standard PayHere Hash Generation (All Uppercase) - Correct for Public Secret
+        // Standard PayHere Hash Generation (All Uppercase)
         // hash = strtoupper(md5(merchant_id . order_id . amount . currency . strtoupper(md5(merchant_secret))))
 
         const hashedSecret = md5(merchantSecret); // Inner Hash MUST be Uppercase
         const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
 
-        console.log("DEBUG: Generating Hash (PUBLIC CREDENTIALS TEST)");
+        console.log("DEBUG: Generating Hash (Standard Uppercase)");
         console.log("Merchant ID:", merchantId);
         console.log("Order ID:", orderId);
         console.log("Amount:", amount);
@@ -96,6 +93,7 @@ serve(async (req) => {
         const payload = {
             merchant_id: merchantId,
             // Fix: Hardcode exact domain from PayHere Sandbox App to prevent "Unauthorized" Origin mismatch
+            // AND IMPORTANT: Ideally the user should add 'http://localhost:5173' to Allowed Domains if testing locally
             return_url: `https://te-dx-uok.vercel.app/payment/success`,
             cancel_url: `https://te-dx-uok.vercel.app/payment/cancel`,
             notify_url: webhookUrl,
