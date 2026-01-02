@@ -50,8 +50,10 @@ serve(async (req) => {
             throw new Error(`Registration not found: ${regError?.message}`);
         }
 
-        const merchantId = Deno.env.get("PAYHERE_MERCHANT_ID")?.trim();
-        const merchantSecret = Deno.env.get("PAYHERE_MERCHANT_SECRET")?.trim();
+        // DEBUG SCRIPT: USING PUBLIC PAYHERE SANDBOX CREDENTIALS
+        // This is to verify if the code works with known-good credentials.
+        const merchantId = "1211149"; // Public Sandbox ID
+        const merchantSecret = "4b8f211332e14f018d5214633d969796"; // Public Sandbox Secret
 
         if (!merchantId || !merchantSecret) {
             throw new Error("Server Misconfiguration: Missing PayHere Secrets");
@@ -61,27 +63,28 @@ serve(async (req) => {
         const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
         const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
-        const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
+        // Use a simple, short Order ID for testing
+        const orderId = payment_id.toString().replace(/-/g, "").substring(0, 20);
 
-        // Fix: Restore standard amount formatting (PayHere requires 2 decimal places usually)
         const amount = Number(payment.amount).toFixed(2);
         const currency = payment.currency;
 
         const md5 = (content: string) =>
             createHash("md5").update(content).digest("hex").toUpperCase();
 
-        // TEST: Using RAW Secret instead of Hashed Secret (Skip inner MD5)
-        // This is often required when the secret is provided in a specific format (like Base64)
-        // Hash = strtoupper(md5(merchant_id . order_id . amount . currency . merchant_secret))
+        // Standard PayHere Hash Generation (All Uppercase) - Correct for Public Secret
+        // hash = strtoupper(md5(merchant_id . order_id . amount . currency . strtoupper(md5(merchant_secret))))
 
-        const hashString = `${merchantId}${orderId}${amount}${currency}${merchantSecret}`;
+        const hashedSecret = md5(merchantSecret); // Inner Hash MUST be Uppercase
+        const hashString = `${merchantId}${orderId}${amount}${currency}${hashedSecret}`;
 
-        console.log("DEBUG: Generating Hash (RAW SECRET VARIANT - No Inner Hash)");
+        console.log("DEBUG: Generating Hash (PUBLIC CREDENTIALS TEST)");
         console.log("Merchant ID:", merchantId);
         console.log("Order ID:", orderId);
         console.log("Amount:", amount);
         console.log("Currency:", currency);
-        console.log("Secret Length:", merchantSecret.length);
+        console.log("Secret (Masked):", merchantSecret.substring(0, 5) + "...");
+        console.log("Hashed Secret:", hashedSecret);
         console.log("Pre-Hash String:", hashString);
 
         const finalHash = md5(hashString); // Outer Hash MUST be Uppercase
