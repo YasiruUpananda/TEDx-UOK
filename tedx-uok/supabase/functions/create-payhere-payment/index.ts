@@ -91,9 +91,9 @@ serve(async (req) => {
 
         const payload = {
             merchant_id: merchantId,
-            // Fix: Hardcode your Vercel domain to prevent "Unauthorized" errors
-            return_url: `https://tedx-uok.vercel.app/payment/success`,
-            cancel_url: `https://tedx-uok.vercel.app/payment/cancel`,
+            // Fix: Use dynamic origin so it works on any Vercel Preview URL or Custom Domain
+            return_url: `${req.headers.get("origin")}/payment/success`,
+            cancel_url: `${req.headers.get("origin")}/payment/cancel`,
             notify_url: webhookUrl,
             order_id: orderId,
             items: "TEDx Ticket Enrollment",
