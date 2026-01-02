@@ -62,7 +62,9 @@ serve(async (req) => {
         const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
         const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
-        const amount = Number(payment.amount).toFixed(2);
+        // Fix: Use simple number formatting. If it's an integer, send without decimals.
+        // PayHere sometimes rejects 2500.00 in the hash.
+        const amount = Number(payment.amount).toString();
         const currency = payment.currency;
 
         const md5 = (content: string) =>
