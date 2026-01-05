@@ -114,8 +114,6 @@ serve(async (req) => {
             city: registration.city,
             country: "Sri Lanka",
             hash: finalHash,
-            // Fix: Toggle based on environment variable (0 = live, 1 = sandbox)
-            sandbox: "1", // Force Sandbox Mode to "1"
         };
 
         return new Response(JSON.stringify(payload), {
