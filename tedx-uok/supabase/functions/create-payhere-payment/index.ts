@@ -61,6 +61,9 @@ serve(async (req) => {
         const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
         const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
+        // Use APP_URL for return/cancel, fallback to Vercel production
+        const appUrl = Deno.env.get("APP_URL")?.replace(/\/$/, "") ?? "https://te-dx-uok.vercel.app";
+
         const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
 
         const amount = Number(payment.amount).toFixed(2);
@@ -83,6 +86,8 @@ serve(async (req) => {
         console.log("Secret (Masked):", merchantSecret.substring(0, 5) + "...");
         console.log("Hashed Secret:", hashedSecret);
         console.log("Pre-Hash String:", hashString);
+        console.log("Returns To:", appUrl);
+        console.log("Notify Url:", webhookUrl);
 
         const finalHash = md5(hashString); // Outer Hash MUST be Uppercase
 
@@ -94,8 +99,8 @@ serve(async (req) => {
             merchant_id: merchantId,
             // Fix: Hardcode exact domain from PayHere Sandbox App to prevent "Unauthorized" Origin mismatch
             // AND IMPORTANT: Ideally the user should add 'http://localhost:5173' to Allowed Domains if testing locally
-            return_url: `https://te-dx-uok.vercel.app/payment/success`,
-            cancel_url: `https://te-dx-uok.vercel.app/payment/cancel`,
+            return_url: `${appUrl}/payment/success`,
+            cancel_url: `${appUrl}/payment/cancel`,
             notify_url: webhookUrl,
             order_id: orderId,
             items: "TEDx Ticket Enrollment",
