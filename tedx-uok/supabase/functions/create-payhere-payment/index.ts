@@ -59,10 +59,10 @@ serve(async (req) => {
 
         // Fix: Dynamically get URL to ensure webhook points to the right project
         const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
-        const webhookUrl = `${supabaseUrl}/functions/v1/payhere-notify`;
 
         // Use APP_URL for return/cancel, fallback to Vercel production
         const appUrl = Deno.env.get("APP_URL")?.replace(/\/$/, "") ?? "https://te-dx-uok.vercel.app";
+        const webhookUrl = `${appUrl}/api/payhere/notify`;
 
         const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
 

@@ -14,17 +14,26 @@ serve(async (req) => {
   }
 
   try {
-    const formData = await req.formData();
-    const entries = Object.fromEntries(formData.entries());
+    let entries: Record<string, string> = {};
+
+    // Handle JSON or FormData
+    const contentType = req.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      entries = await req.json();
+    } else {
+      const formData = await req.formData();
+      entries = Object.fromEntries(formData.entries()) as Record<string, string>;
+    }
+
     console.log("PayHere Webhook Payload:", JSON.stringify(entries));
 
-    const merchant_id = formData.get("merchant_id")?.toString();
-    const order_id = formData.get("order_id")?.toString();
-    const payment_id = formData.get("payment_id")?.toString();
-    const payhere_amount = formData.get("payhere_amount")?.toString();
-    const payhere_currency = formData.get("payhere_currency")?.toString();
-    const status_code = formData.get("status_code")?.toString();
-    const md5sig = formData.get("md5sig")?.toString();
+    const merchant_id = entries.merchant_id?.toString();
+    const order_id = entries.order_id?.toString();
+    const payment_id = entries.payment_id?.toString();
+    const payhere_amount = entries.payhere_amount?.toString();
+    const payhere_currency = entries.payhere_currency?.toString();
+    const status_code = entries.status_code?.toString();
+    const md5sig = entries.md5sig?.toString();
 
     const merchantSecret = Deno.env.get("PAYHERE_MERCHANT_SECRET");
     const envMerchantId = Deno.env.get("PAYHERE_MERCHANT_ID");
