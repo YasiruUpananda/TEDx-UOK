@@ -64,7 +64,9 @@ serve(async (req) => {
         const appUrl = Deno.env.get("APP_URL")?.replace(/\/$/, "") ?? "https://te-dx-uok.vercel.app";
         const webhookUrl = `${appUrl}/api/payhere/notify`;
 
-        const orderId = payment_id.toString().replace(/-/g, ""); // Remove hyphens for safer handling
+        // Fix: PayHere Sandbox requires shorter, alphanumeric order_ids (max ~20 chars)
+        // Using a prefix + first 12 chars of UUID avoids "Unauthorized" errors
+        const orderId = `TEDX_${payment_id.toString().replace(/-/g, "").slice(0, 12).toUpperCase()}`;
 
         const amount = Number(payment.amount).toFixed(2);
         const currency = payment.currency;
