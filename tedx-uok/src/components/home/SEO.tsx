@@ -1,5 +1,4 @@
-// React 19 supports native title and meta tags
-
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   eventName: string;
@@ -12,7 +11,7 @@ const SEO = ({ eventName, description, image, url }: SEOProps) => {
   const siteTitle = eventName || "TEDxUOK 2026";
 
   return (
-    <>
+    <Helmet>
       <title>{siteTitle}</title>
       <meta name="description" content={description} />
 
@@ -26,7 +25,7 @@ const SEO = ({ eventName, description, image, url }: SEOProps) => {
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={description} />
       {image && <meta name="twitter:image" content={image} />}
-    </>
+    </Helmet>
   );
 };
 

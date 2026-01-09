@@ -31,15 +31,15 @@ const redirectToPayHere = (payload: any) => {
   console.log("Starting PayHere Redirect with Payload:", payload);
 
   const form = document.createElement("form");
-  form.method = "POST";
-  form.action = "https://sandbox.payhere.lk/pay/checkout";
-  form.style.display = "none";
+  form.setAttribute("method", "POST");
+  form.setAttribute("action", "https://sandbox.payhere.lk/pay/checkout");
+  form.setAttribute("style", "display: none;");
 
-  Object.entries(payload).forEach(([key, value]) => {
+  Object.keys(payload).forEach((key) => {
     const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = key;
-    input.value = String(value);
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", key);
+    input.setAttribute("value", payload[key]);
     form.appendChild(input);
   });
 
