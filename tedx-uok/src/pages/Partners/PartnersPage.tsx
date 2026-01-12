@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Linkedin, Crown, Medal, HandHeart } from "lucide-react";
+import { Linkedin, Crown, Medal, HandHeart, Download, Send } from "lucide-react";
+import { Button } from "../../components/ui/Button";
 import { sharedStyles } from "../../utils/constants";
 import { supabase } from "../../lib/supabase";
 import { getSupabaseStorageUrl } from "../../lib/utils";
@@ -18,6 +19,7 @@ interface Partner {
 const PartnersPage: React.FC = () => {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
+
   useSEO({
     title: "Our Partners - Collaborators & Supporters | TEDxUOK",
     description:
@@ -219,6 +221,31 @@ const PartnersPage: React.FC = () => {
             <p className={sharedStyles.typography.heroDescriptionDark}>
               Tiered showcases and equal spotlight for every collaborator.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-end">
+              <Button
+                variant="tedxSecondary"
+                size="lg"
+                className="w-full sm:w-auto text-white border-white hover:bg-white hover:text-black"
+                onClick={() => window.open("https://qhzbujkbfacvxhjzetur.supabase.co/storage/v1/object/public/public-assets/SA%20Lec-Note.pdf", "_blank")}
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Proposal
+              </Button>
+              <Button
+                variant="tedxPrimary"
+                size="lg"
+                className="w-full sm:w-auto"
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/forms/d/e/your-form-id/viewform",
+                    "_blank"
+                  )
+                }
+              >
+                <Send className="mr-2 h-4 w-4" />
+                Submit Proposal
+              </Button>
+            </div>
           </div>
         </div>
       </section>
