@@ -56,13 +56,13 @@ export default function Navbar() {
                 <span className="text-[#EB0028] absolute top-[-20%]">x</span>
                 <span className="opacity-0">x</span>
               </span>
-              <span className="text-white">UoK</span>
+              <span className="text-white font-normal">UoK</span>
             </a>
           </div>
 
           {/* Desktop */}
           {/* Center: Nav Links */}
-          <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-8">
+          <nav className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-8">
             {links.map((l) => {
               if (l.subItems) {
                 return (
@@ -80,9 +80,8 @@ export default function Navbar() {
                     </button>
                     {/* Dropdown Menu */}
                     <div
-                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48 ${
-                        activeDropdown === l.label ? "block" : "hidden"
-                      }`}
+                      className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48 ${activeDropdown === l.label ? "block" : "hidden"
+                        }`}
                     >
                       <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-lg shadow-xl overflow-hidden py-2">
                         {l.subItems.map((sub) => (
@@ -90,27 +89,26 @@ export default function Navbar() {
                             key={sub.to}
                             to={sub.to}
                             className={({ isActive }) =>
-                              `block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 ${
-                                isActive ? "text-white bg-white/5" : ""
+                              `block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5 ${isActive ? "text-white bg-white/5" : ""
                               }`
                             }
                           >
                             {sub.label === "TED" ? (
-                              <span className="font-extrabold">TED</span>
+                              <span className="font-extrabold text-[#EB0028]">TED</span>
                             ) : sub.label === "TEDx" ? (
-                              <span className="relative inline-block font-extrabold">
+                              <span className="relative inline-block font-extrabold text-[#EB0028]">
                                 <span>TED</span>
                                 <span className="absolute top-[-20%]">x</span>
                                 <span className="opacity-0">x</span>
                               </span>
                             ) : sub.label === 'TEDxUoK' ? (
                               <span className="font-extrabold">
-                                <span className="relative inline-block">
+                                <span className="relative inline-block text-[#EB0028]">
                                   <span>TED</span>
                                   <span className="absolute top-[-20%]">x</span>
                                   <span className="opacity-0">x</span>
                                 </span>
-                                <span>UoK</span>
+                                <span className="text-white font-normal"> UoK</span>
                               </span>
                             ) : sub.label === 'Theme 2026' ? (
                               <span className="font-bold">{sub.label}</span>
@@ -142,14 +140,14 @@ export default function Navbar() {
           </nav>
 
           {/* Right: Actions */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <Button variant="tedxPrimary" size="sm" asChild>
               <NavLink to="/register">Register Now</NavLink>
             </Button>
           </div>
 
           {/* Mobile hamburger */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               aria-label="Open menu"
               aria-expanded={open}
@@ -178,9 +176,8 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div
-        className={`md:hidden fixed inset-y-0 left-0 w-64 bg-black text-white transform transition-transform duration-300 ease-in-out z-50 ${
-          open ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`lg:hidden fixed inset-y-0 left-0 w-64 bg-black text-white transform transition-transform duration-300 ease-in-out z-50 overflow-y-auto ${open ? "translate-x-0" : "-translate-x-full"
+          }`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-menu-title"
@@ -229,9 +226,8 @@ export default function Navbar() {
                     >
                       {l.label}
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform ${
-                          activeDropdown === l.label ? "rotate-180" : ""
-                        }`}
+                        className={`w-4 h-4 transition-transform ${activeDropdown === l.label ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
                     {activeDropdown === l.label && (
@@ -242,29 +238,28 @@ export default function Navbar() {
                               to={sub.to}
                               onClick={() => setOpen(false)}
                               className={({ isActive }) =>
-                                `block px-3 py-2 rounded text-sm text-white/80 ${
-                                  isActive ? "text-white" : "hover:text-red-400"
+                                `block px-3 py-2 rounded text-sm text-white/80 ${isActive ? "text-white" : "hover:text-red-400"
                                 }`
                               }
                             >
                               {sub.label === "TED" ? (
-                                <span className="font-extrabold">TED</span>
+                                <span className="font-extrabold text-[#EB0028]">TED</span>
                               ) : sub.label === "TEDx" ? (
-                                <span className="relative inline-block font-extrabold">
+                                <span className="relative inline-block font-extrabold text-[#EB0028]">
                                   <span>TED</span>
                                   <span className="absolute top-[-20%]">x</span>
                                   <span className="opacity-0">x</span>
                                 </span>
                               ) : sub.label === 'TEDxUoK' ? (
                                 <span className="font-extrabold">
-                                  <span className="relative inline-block">
+                                  <span className="relative inline-block text-[#EB0028]">
                                     <span>TED</span>
                                     <span className="absolute top-[-20%]">
                                       x
                                     </span>
                                     <span className="opacity-0">x</span>
                                   </span>
-                                  <span>UoK</span>
+                                  <span className="text-white font-normal">UoK</span>
                                 </span>
                               ) : sub.label === 'Theme 2026' ? (
                                 <span className="font-bold">{sub.label}</span>
@@ -286,10 +281,9 @@ export default function Navbar() {
                     to={l.to!}
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                      `block px-3 py-2 rounded text-white ${
-                        isActive
-                          ? "underline decoration-red-600"
-                          : "hover:text-red-400"
+                      `block px-3 py-2 rounded text-white ${isActive
+                        ? "underline decoration-red-600"
+                        : "hover:text-red-400"
                       }`
                     }
                   >
@@ -317,7 +311,7 @@ export default function Navbar() {
         <button
           onClick={() => setOpen(false)}
           aria-label="Close menu"
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
         />
       )}
     </header>

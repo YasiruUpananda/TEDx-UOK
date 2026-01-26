@@ -14,8 +14,8 @@ const footerLinks = {
   ],
   about: [
     { name: "About TED", href: "/about#ted" },
-    { name: "About TEDx", href: "/about#tedx" },
-    { name: "About TEDxUoK", href: "/about#tedxuok" },
+    { name: <>About TED<sup>x</sup></>, href: "/about#tedx" },
+    { name: <>About TED<sup>x</sup> UoK</>, href: "/about#tedxuok" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -23,7 +23,7 @@ const footerLinks = {
     { name: "Accessibility", href: "/accessibility" },
     { name: "Licensing", href: "/licensing" },
     {
-      name: "TEDx Rules",
+      name: <>TED<sup>x</sup> Rules</>,
       href: "https://www.ted.com/about/our-organization/our-policies-terms/tedx-rules",
       external: true,
     },
@@ -52,13 +52,12 @@ export default function Footer() {
             >
               <span className="relative inline-block text-[#EB0028]">
                 <span>TED</span>
-                <span className="absolute top-[-10%]">x</span>
-                <span className="opacity-0">x</span>
+                <span className="text-primary"><sup>x</sup></span>
               </span>
-              <span className="text-white">UoK</span>
+              <span className="text-white font-normal">UoK</span>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed text-left">
-              Ideas worth spreading. An independently organized TEDx event at
+              Ideas worth spreading. An independently organized TED<sup>x</sup> event at
               the University of Kelaniya.
             </p>
             <div className="flex space-x-4">

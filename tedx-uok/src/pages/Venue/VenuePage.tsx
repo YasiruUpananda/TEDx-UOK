@@ -131,9 +131,6 @@ const VenuePage: React.FC = () => {
           <h3 className="text-4xl font-bold tracking-tight mb-2 uppercase">
             {venue.address_line_1}
           </h3>
-          <p className="text-xl font-bold text-white">
-            TED<sup className="text-[0.6em] relative -top-1">x</sup> UoK
-          </p>
         </header>
 
         {/* Map Section */}

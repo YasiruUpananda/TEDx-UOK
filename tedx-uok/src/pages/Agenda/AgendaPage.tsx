@@ -154,12 +154,12 @@ const AgendaPage = () => {
     <div className="relative bg-black text-white min-h-screen pt-24 pb-20 overflow-x-hidden">
       {/* Background Decorative Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center select-none">
-        <div className="relative opacity-[0.02] transform -rotate-12 scale-150 sm:scale-100">
+        <div className="relative opacity-[0.025] transform -rotate-12 scale-150 sm:scale-100">
           <div className="flex items-baseline leading-none font-bold">
-            <span className="text-[40vw] text-white tracking-tighter">TED</span>
-            <span className="text-[40vw] text-[#EB0028]">x</span>
+            <span className="text-[40vw] text-white tracking-tighter">TED </span>
+            <span className="text-[40vw] text-[#EB0028]"><sup>x</sup></span>
           </div>
-          <div className="text-[15vw] text-white font-bold text-right -mt-[5vw] mr-[4vw]">
+          <div className="text-[15vw] text-white font-normal text-right -mt-[5vw] mr-[4vw]">
             UoK
           </div>
         </div>
@@ -222,8 +222,8 @@ const AgendaPage = () => {
                     {/* Content Card */}
                     <div
                       className={`w-full md:w-[45%] pl-12 sm:pl-16 md:pl-0 ${isLeft
-                          ? "md:pr-8 lg:pr-12 md:text-right"
-                          : "md:pl-8 lg:pl-12 md:text-left"
+                        ? "md:pr-8 lg:pr-12 md:text-right"
+                        : "md:pl-8 lg:pl-12 md:text-left"
                         }`}
                     >
                       <div className="group relative bg-[#0E0E0E] border border-[#1F1F1F] p-6 sm:p-8 rounded-xl transition-all duration-500 hover:border-[#EB0028]/40 hover:shadow-[0_4px_20px_-2px_rgba(235,0,40,0.1)]">

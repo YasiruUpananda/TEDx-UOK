@@ -6,8 +6,12 @@ const supabaseAnonKey = (import.meta.env
   .VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
   import.meta.env.VITE_SUPABASE_ANON_KEY) as string;
 
+// Validate කරන්න
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error("Supabase env vars are missing");
+  console.error('Supabase credentials missing in environment variables');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Single instance එකක් export කරන්න
+export const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;

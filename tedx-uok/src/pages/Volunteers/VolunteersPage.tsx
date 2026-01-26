@@ -432,14 +432,16 @@ const VolunteersPage: React.FC = () => {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h1
-                className="text-4xl sm:text-5xl font-bold mb-4"
+                className="text-3xl sm:text-4xl font-bold mb-4"
                 style={{ color: "#FFFFFF", letterSpacing: "0" }}
               >
                 Volunteer Application for{" "}
                 <span style={{ color: "#EB0028" }}>
                   TED<sup style={{ color: "#EB0028" }}>x</sup>
                 </span>{" "}
-                <span style={{ color: "#FFFFFF" }}>UoK</span>
+                <span style={{ color: "#FFFFFF", fontWeight: "normal" }}>
+                  UoK
+                </span>
               </h1>
               <p
                 className="text-gray-400 text-lg mb-4"

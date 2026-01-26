@@ -211,7 +211,7 @@ const TeamPage: React.FC = () => {
               <span className={sharedStyles.colors.tedxRed}>
                 TED<sup>x</sup>
               </span>
-              <span className="text-white"> UoK</span>
+              <span className="font-normal  text-white"> U<span className="lowercase">o</span>K</span>
             </h1>
             <h2
               className={`${sharedStyles.typography.heroTitle} text-white mt-5`}

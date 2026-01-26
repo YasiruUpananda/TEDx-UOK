@@ -28,7 +28,7 @@ export default function LicensingPage() {
               </h2>
               <p>
                 TEDx is a program of local, self-organized events that bring
-                people together to share a TED-like experience. At TEDx UOK, our
+                people together to share a TED-like experience. At TED<sup>x</sup> UoK, our
                 event is organized by the University of Kelaniya community under
                 a license granted by TED.
               </p>
@@ -39,8 +39,7 @@ export default function LicensingPage() {
                 Independent <span className="text-[#EB0028]">Organization</span>
               </h2>
               <p>
-                While we operate under TED's brand and format guidelines, TEDx
-                UOK is independently organized and operated. TED Conferences LLC
+                While we operate under TED<sup>x</sup>'s brand and format guidelines, TED<sup>x</sup> UoK is independently organized and operated. TED Conferences LLC
                 does not control or endorse the specific content of our event,
                 speakers, or presentations.
               </p>

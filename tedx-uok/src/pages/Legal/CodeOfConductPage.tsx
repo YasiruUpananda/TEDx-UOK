@@ -26,8 +26,7 @@ export default function CodeOfConductPage() {
             {/* At TEDx UOK, You Agree To - Card Style */}
             <div className="space-y-6">
               <h2 className="text-2xl font-semibold text-white !mb-6">
-                At TEDx UOK,
-                <span className="text-[#EB0028]"> You Agree To:</span>
+                <span className="text-[#EB0028]"> You Agree To</span>
               </h2>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl p-5 hover:border-[#EB0028]/20 transition-all duration-300">
@@ -72,7 +71,7 @@ export default function CodeOfConductPage() {
               <h2 className="text-2xl font-semibold text-white !mb-6">
                 Unacceptable <span className="text-[#EB0028]">Behavior</span>
               </h2>
-              <p>These behaviors don't belong at TEDx UOK:</p>
+              <p>These behaviors don't belong at TED<sup>x</sup> UoK:</p>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl p-5 hover:border-[#EB0028]/20 transition-all duration-300">
                   <p className="text-white text-left">
@@ -120,7 +119,7 @@ export default function CodeOfConductPage() {
               </h2>
               <p>
                 If you experience or witness behavior that violates this Code of
-                Conduct, please report it immediately to a TEDx UOK organizer or
+                Conduct, please report it immediately to a TED<sup>x</sup> UoK organizer or
                 email{" "}
                 <a
                   href="mailto:conduct@tedxuok.com"

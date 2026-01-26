@@ -194,7 +194,7 @@ const PressMedia = () => {
                   <span className="text-[#EB0028]">
                     TED<sup>x</sup>
                   </span>{" "}
-                  UoK 2025
+                  <span className="font-normal">UoK</span> 2025
                 </h3>
                 <p className="text-gray-300 mb-6 leading-relaxed">
                   TED<sup>x</sup>UoK is an independently organized TED event at

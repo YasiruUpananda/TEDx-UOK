@@ -13,10 +13,10 @@ interface props {
 const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
   const eventDate = date
     ? new Date(date).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
     : "Date To Be Announced";
 
   const eventVenue = venue || "Venue To Be Annouced";
@@ -47,7 +47,7 @@ const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
             {/* Event Badge */}
             <div className="inline-flex items-center gap-2 mb-8 opacity-0 animate-fade-in-up">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
+              <span className="text-sm font-medium uppercase text-muted-foreground tracking-widest">
                 Independently Organized TEDx Event
               </span>
             </div>
@@ -57,7 +57,7 @@ const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
               <span className="text-primary">TED</span>
               <span className="text-primary absolute top-[-20%] ">x</span>
               <span className="opacity-0">x</span>
-              <span className="text-foreground "> UoK</span>
+              <span className="text-foreground font-normal"> UoK</span>
             </h1>
 
             {/* Theme */}

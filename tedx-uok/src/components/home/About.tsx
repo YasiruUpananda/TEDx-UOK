@@ -20,18 +20,25 @@ const About = ({ description }: props) => {
               Ideas that inspire, connect, and transform
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              {description ||
-                "TEDxUOK brings together thought leaders, innovators, and change-makers to share ideas worth spreading. Join us for a day of inspiring talks, meaningful connections, and transformative experiences."}
+              {description ? (
+                description
+              ) : (
+                <>
+                  <span className="font-bold text-[#EB0028]">TED</span>
+                  <sup className="font-bold text-[#EB0028]">x</sup>
+                  <span className="font-normal text-white"> UoK</span> brings together thought leaders, innovators, and change-makers to share ideas worth spreading. Join us for a day of inspiring talks, meaningful connections, and transformative experiences.
+                </>
+              )}
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              As an independently organized TEDx event, we follow the spirit of
+              As an independently organized TED<sup>x</sup> event, we follow the spirit of
               TED's mission to spread ideas that matter. This event is about
               sparking deep discussion and fostering connections among
               attendees.
             </p>
             <Link to="/about">
               <Button variant="tedxSecondary" size="lg">
-                Learn More About TEDx
+                Learn More About TED<sup>x</sup>
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

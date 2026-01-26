@@ -335,7 +335,7 @@ export const VolunteerApplicationPage: React.FC = () => {
                 <span style={{ color: "#EB0028" }}>
                   TED<sup style={{ color: "#EB0028" }}>x</sup>
                 </span>{" "}
-                <span style={{ color: "#FFFFFF" }}>UoK</span>
+                <span style={{ fontWeight: "normal", color: "#FFFFFF" }}>UoK</span>
               </h1>
               <p
                 className="text-gray-300 text-lg sm:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"

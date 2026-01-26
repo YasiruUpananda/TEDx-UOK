@@ -25,8 +25,7 @@ export default function BlogListPage() {
         {/* Header - Minimal "r." style from inspiration, adapted to TEDx */}
         <div className="mb-16">
           <span className="font-bold text-2xl tracking-tighter">
-            <span className="text-white">TEDx UOK</span>
-            <span className="text-[#EB0028]">.</span>
+            <span style={{ color: '#EB0028' }}>TED<sup>x</sup></span><span className="text-white font-normal"> UoK</span>
           </span>
         </div>
 
@@ -41,7 +40,7 @@ export default function BlogListPage() {
               whileInView={{ opacity: 1, x: 0 }}
               className="text-4xl font-bold mb-12 font-['Helvetica_Neue']"
             >
-              Featured<span className="text-[#EB0028]">.</span>
+              Featured
             </motion.h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">

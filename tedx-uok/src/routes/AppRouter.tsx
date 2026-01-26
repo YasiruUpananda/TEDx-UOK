@@ -7,17 +7,17 @@ import AboutPage from "../pages/About/AboutPage";
 import AboutTedPage from "../pages/About/AboutTedPage";
 import AboutTedxPage from "../pages/About/AboutTedxPage";
 import AboutTedxUokPage from "../pages/About/AboutTedxUokPage";
-import SpeakersListPage from "../pages/Speakers/SpeakersListPage";
-import SpeakerDetailPage from "../pages/Speakers/SpeakerDetailPage";
+// import SpeakersListPage from "../pages/Speakers/SpeakersListPage";
+// import SpeakerDetailPage from "../pages/Speakers/SpeakerDetailPage";
 import TeamPage from "../pages/Team/TeamPage";
 import PartnersPage from "../pages/Partners/PartnersPage";
 import ContactPage from "../pages/Contact/ContactPage";
 import RegistrationPage from "../pages/Registration/RegistrationPage";
-import AgendaPage from "../pages/Agenda/AgendaPage";
+// import AgendaPage from "../pages/Agenda/AgendaPage";
 import ThemePage from "../pages/Theme/Theme";
-import BlogListPage from "../pages/Blog/BlogListPage";
-import BlogPostPage from "../pages/Blog/BlogPostPage";
-import BlogDetailPage from "../pages/Blog/BlogDetailPage";
+// import BlogListPage from "../pages/Blog/BlogListPage";
+// import BlogPostPage from "../pages/Blog/BlogPostPage";
+// import BlogDetailPage from "../pages/Blog/BlogDetailPage";
 import ImpactPage from "../pages/Impact/ImpactPage";
 import MediaPage from "../pages/PressAndMedia/PressAndMediaPage";
 import PastEventsPage from "../pages/PastEvents/PastEventsPage";
@@ -33,7 +33,7 @@ import PaymentSuccessPage from "../pages/Payment/PaymentSuccessPage";
 import PaymentFailPage from "../pages/Payment/PaymentFailPage";
 import PaymentCancelPage from "../pages/Payment/PaymentCancelPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
-import CommunityRegistrationPage from "../pages/Community/CommunityPage";
+import ComingSoon from "../pages/ComingSoon/ComingSoon";
 
 import ScrollToTop from "../components/common/ScrollToTop";
 
@@ -95,7 +95,7 @@ function AnimatedRoutes() {
         path="/speakers"
         element={
           <div key={location.pathname} className="page-transition">
-            <SpeakersListPage />
+            <ComingSoon />
           </div>
         }
       />
@@ -103,7 +103,7 @@ function AnimatedRoutes() {
         path="/speakers/:id"
         element={
           <div key={location.pathname} className="page-transition">
-            <SpeakerDetailPage />
+            <ComingSoon />
           </div>
         }
       />
@@ -112,7 +112,7 @@ function AnimatedRoutes() {
         path="/agenda"
         element={
           <div key={location.pathname} className="page-transition">
-            <AgendaPage />
+            <ComingSoon />
           </div>
         }
       />
@@ -155,7 +155,7 @@ function AnimatedRoutes() {
         path="/blog"
         element={
           <div key={location.pathname} className="page-transition">
-            <BlogListPage />
+            <ComingSoon />
           </div>
         }
       />
@@ -163,7 +163,7 @@ function AnimatedRoutes() {
         path="/blog/:slug"
         element={
           <div key={location.pathname} className="page-transition">
-            <BlogPostPage />
+            <ComingSoon />
           </div>
         }
       />
@@ -171,7 +171,7 @@ function AnimatedRoutes() {
         path="/blog/detail/:id"
         element={
           <div key={location.pathname} className="page-transition">
-            <BlogDetailPage />
+            <ComingSoon />
           </div>
         }
       />
@@ -315,7 +315,22 @@ function AnimatedRoutes() {
           </div>
         }
       />
+
+      <Route
+        path="/coming-soon"
+        element={
+          <div key={location.pathname} className="page-transition">
+            <ComingSoon />
+          </div>
+        }
+      />
+
+
     </Routes>
+
+
+
+
   );
 }
 

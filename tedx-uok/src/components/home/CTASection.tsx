@@ -23,7 +23,7 @@ const CTASection = ({ ctaLabel, ctaLink }: props) => {
             <h3 className="text-2xl font-bold mb-4">Attend the Event</h3>
             <p className="text-primary-foreground/80 mb-8 leading-relaxed">
               Be part of an unforgettable experience. Register now to secure
-              your spot at TEDxUOK.
+              your spot at TED<sup>x</sup> UoK.
             </p>
             <Link to={primaryLink}>
               <Button

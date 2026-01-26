@@ -205,7 +205,7 @@ const PartnersPage: React.FC = () => {
               <span className={sharedStyles.colors.tedxRed}>
                 TED<sup>x</sup>
               </span>
-              <span className={sharedStyles.colors.white}> UoK</span>
+              <span className={`${sharedStyles.colors.white} font-normal`}> UoK</span>
             </h1>
             <h2
               className={`${sharedStyles.typography.heroTitle} ${sharedStyles.colors.white} mt-5`}
@@ -251,7 +251,7 @@ const PartnersPage: React.FC = () => {
             <span className={sharedStyles.colors.tedxRed}>
               TED<sup>x</sup>
             </span>
-            <span className={sharedStyles.colors.black}> UoK</span> 2026
+            <span className={`${sharedStyles.colors.black} font-normal`}> UoK</span> 2026
           </h2>
           <button className="bg-gradient-to-r from-[#EB0028] to-[#d10022] text-white px-8 py-3 sm:px-10 sm:py-4 text-base sm:text-lg font-medium rounded-lg hover:from-[#d10022] hover:to-[#b8001e] transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
             Register Now

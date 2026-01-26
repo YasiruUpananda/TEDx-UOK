@@ -134,7 +134,7 @@ export default function FAQPage() {
             Frequently <span className="text-[#EB0028]">Asked Questions</span>
           </h1>
           <p className="mx-auto max-w-2xl text-white">
-            Answers to common questions about attending TEDxUoK.
+            Answers to common questions about attending TED<sup>x</sup> UoK.
           </p>
         </div>
 
@@ -166,8 +166,8 @@ export default function FAQPage() {
                     <div
                       key={id}
                       className={`rounded-2xl border bg-[#0E0E0E] px-6 transition-all duration-300 ${isOpen
-                          ? "border-[#EB0028]/50 pb-6"
-                          : "border-[#1F1F1F] pb-0 hover:border-[#EB0028]/30"
+                        ? "border-[#EB0028]/50 pb-6"
+                        : "border-[#1F1F1F] pb-0 hover:border-[#EB0028]/30"
                         }`}
                     >
                       {/* Button Section */}
@@ -186,8 +186,8 @@ export default function FAQPage() {
                       {/* Animated Content Section using CSS Grid Trick */}
                       <div
                         className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen
-                            ? "grid-rows-[1fr] opacity-100"
-                            : "grid-rows-[0fr] opacity-0"
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
                           }`}
                       >
                         <div className="overflow-hidden">

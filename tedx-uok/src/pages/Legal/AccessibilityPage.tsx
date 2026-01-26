@@ -156,7 +156,7 @@ export default function AccessibilityPage() {
                 please contact us at{" "}
                 <a
                   href="mailto:info@tedxuok.com"
-                  className="!font-semibold hover:text-[#B09F8D] underline"
+                  className="!font-semibold hover:text-primary underline"
                 >
                   info@tedxuok.com
                 </a>

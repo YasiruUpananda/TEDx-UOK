@@ -11,9 +11,9 @@ export default function AboutTedxUokPage() {
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8">
-            <span className="text-foreground">TED</span>
+            <span className="text-primary">TED</span>
             <sup className="text-primary text-[0.8em]">x</sup>
-            <span className="text-foreground ml-4">UOK</span>
+            <span className="text-foreground ml-4 font-normal">UoK</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto px-2">
             Spreading ideas worth sharing at the University of Kelaniya.
@@ -30,7 +30,7 @@ export default function AboutTedxUokPage() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">Our Mission & Story</h2>
           <div className="bg-card border border-border rounded-lg p-8">
             <p className="text-xl text-muted-foreground mb-6">
-              TED<sup className="text-[0.8em]">x</sup>UOK was founded with a simple yet powerful vision: to create a platform
+              TED<sup className="text-[0.8em]">x</sup> UoK was founded with a simple yet powerful vision: to create a platform
               where innovative ideas from the University of Kelaniya community could be
               shared with the world.
             </p>
@@ -44,7 +44,7 @@ export default function AboutTedxUokPage() {
 
         {/* Theme Intro */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">TED<sup className="text-[0.8em]">x</sup>UOK {eventYear}: {currentTheme}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">TED<sup className="text-[0.8em]">x</sup> UoK {eventYear}: {currentTheme}</h2>
           <div className="bg-card border border-border rounded-lg p-8">
             <h3 className="text-2xl font-bold text-foreground mb-4">What is the Ripple Effect?</h3>
             <p className="text-muted-foreground mb-4">
@@ -143,7 +143,7 @@ export default function AboutTedxUokPage() {
                 to="/about/tedx"
                 className="border-2 border-primary text-foreground px-6 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
               >
-                About TEDx
+                About TED<sup>x</sup>
               </Link>
             </div>
             <Link
