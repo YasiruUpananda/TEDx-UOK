@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, User } from 'lucide-react';
 import { useBlog } from '../../hooks/useBlog';
 import { BlogCard } from '../../components/blog/BlogCard';

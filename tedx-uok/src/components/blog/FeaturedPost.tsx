@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Clock, User } from 'lucide-react';
 import type { BlogPost } from '../../types/models';
 

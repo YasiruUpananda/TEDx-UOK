@@ -15,6 +15,7 @@ import {
   Globe,
   Utensils,
 } from "lucide-react";
+import Footer from "../../components/layout/Footer";
 
 // Local Temporary Components
 const PageHero = ({
@@ -44,48 +45,48 @@ const PageHero = ({
   );
 };
 
-// // CountUp Component for Stats
-// const CountUp = ({
-//   end,
-//   duration = 2000,
-// }: {
-//   end: number;
-//   duration?: number;
-// }) => {
-//   const [count, setCount] = React.useState(0);
-//   const nodeRef = React.useRef(null);
+// CountUp Component for Stats (unused)
+/* const CountUp = ({
+  end,
+  duration = 2000,
+}: {
+  end: number;
+  duration?: number;
+}) => {
+  const [count, setCount] = React.useState(0);
+  const nodeRef = React.useRef(null);
 
-//   React.useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       (entries) => {
-//         if (entries[0].isIntersecting) {
-//           observer.disconnect();
-//           let startTime: number | null = null;
-//           const animate = (currentTime: number) => {
-//             if (!startTime) startTime = currentTime;
-//             const progress = currentTime - startTime;
-//             if (progress < duration) {
-//               setCount(Math.min(end, Math.floor((progress / duration) * end)));
-//               requestAnimationFrame(animate);
-//             } else {
-//               setCount(end);
-//             }
-//           };
-//           requestAnimationFrame(animate);
-//         }
-//       },
-//       { threshold: 0.1 } // Trigger when 10% visible
-//     );
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          let startTime: number | null = null;
+          const animate = (currentTime: number) => {
+            if (!startTime) startTime = currentTime;
+            const progress = currentTime - startTime;
+            if (progress < duration) {
+              setCount(Math.min(end, Math.floor((progress / duration) * end)));
+              requestAnimationFrame(animate);
+            } else {
+              setCount(end);
+            }
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% visible
+    );
 
-//     if (nodeRef.current) {
-//       observer.observe(nodeRef.current);
-//     }
+    if (nodeRef.current) {
+      observer.observe(nodeRef.current);
+    }
 
-//     return () => observer.disconnect();
-//   }, [end, duration]);
+    return () => observer.disconnect();
+  }, [end, duration]);
 
-//   return <span ref={nodeRef}>{count}</span>;
-// };
+  return <span ref={nodeRef}>{count}</span>;
+}; */
 
 import { useSEO } from "../../hooks/useSEO";
 import { seoConfig } from "../../config/seo";
@@ -112,16 +113,16 @@ const ImpactPage = () => {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <div className="w-full min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <div className="pt-24">
-        <PageHero
-          title="Social Impact"
-          subtitle="Driving positive change through ideas and action."
-          className="animate-on-scroll opacity-0"
-        />
-      </div>
+    return (
+        <div className="w-full min-h-screen bg-black text-white">
+            {/* Hero Section */}
+            <div className="pt-24">
+                <PageHero
+                    title="Social Impact"
+                    subtitle="Driving positive change through ideas and action."
+                    className="animate-on-scroll opacity-0"
+                />
+            </div>
 
       {/* Impact Mission */}
       <Section className="text-center mb-16 animate-on-scroll opacity-0 w-full max-w-[1280px] mx-auto">
@@ -340,6 +341,8 @@ const ImpactPage = () => {
           </div>
         </div>
       </Section>
+
+      <Footer />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { supabase } from "../../lib/supabase";
-import { useSEO } from "../../hooks/useSEO";
-import { seoConfig } from "../../config/seo";
+
+type TableInsert<_T extends string> = Record<string, unknown>;
 
 interface FormData {
   full_name: string;
@@ -179,10 +179,12 @@ const FormSelect = ({
   );
 };
 
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
+
 const VolunteersPage: React.FC = () => {
   // Set body background to black when component mounts
   useSEO(seoConfig.volunteers);
-
   React.useEffect(() => {
     document.body.style.backgroundColor = "#000000";
     document.body.style.margin = "0";
@@ -195,7 +197,6 @@ const VolunteersPage: React.FC = () => {
       document.documentElement.style.backgroundColor = "";
     };
   }, []);
-
   const [formData, setFormData] = React.useState<FormData>({
     full_name: "",
     email: "",
@@ -213,6 +214,18 @@ const VolunteersPage: React.FC = () => {
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = React.useState<number>(0);
   const [isUploading, setIsUploading] = React.useState(false);
+
+  React.useEffect(() => {
+    document.body.style.backgroundColor = "#000000";
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
+    document.documentElement.style.backgroundColor = "#000000";
+
+    return () => {
+      document.body.style.backgroundColor = "";
+      document.documentElement.style.backgroundColor = "";
+    };
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -347,8 +360,7 @@ const VolunteersPage: React.FC = () => {
       }
 
       // Insert volunteer application
-      // Changed Type to 'any' to fix the TableInsert build error
-      const volunteerData: any = {
+      const volunteerData: TableInsert<"volunteer_applications"> = {
         event_id: eventId,
         full_name: formData.full_name,
         email: formData.email,

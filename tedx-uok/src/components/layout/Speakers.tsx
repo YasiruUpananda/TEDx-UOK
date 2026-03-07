@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Search } from 'lucide-react';
@@ -17,7 +17,7 @@ export function Speakers() {
         speaker.full_name.toLowerCase().includes(query) ||
         speaker.title.toLowerCase().includes(query) ||
         speaker.talk_title.toLowerCase().includes(query) ||
-        (speaker.expertise || []).some(tag => tag.toLowerCase().includes(query))
+        (speaker.expertise || []).some((tag: string) => tag.toLowerCase().includes(query))
       );
     });
   }, [speakers, searchQuery]);
@@ -98,7 +98,7 @@ export function Speakers() {
 
         {/* Speaker Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <AnimatePresence mode='popLayout'>
+          <AnimatePresence mode="popLayout">
             {displayedSpeakers.map((speaker, index) => (
               <motion.div
                 key={speaker.speaker_id}
@@ -150,7 +150,7 @@ export function Speakers() {
 
                       {/* Expertise Tags */}
                       <div className="flex flex-wrap gap-2 pt-2">
-                        {(speaker.expertise || []).slice(0, 2).map((tag, i) => (
+                        {(speaker.expertise || []).slice(0, 2).map((tag: string, i: number) => (
                           <span
                             key={i}
                             className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/50 text-[10px]"

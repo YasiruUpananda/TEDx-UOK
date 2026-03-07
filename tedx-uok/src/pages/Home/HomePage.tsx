@@ -51,7 +51,7 @@ const HomePage = () => {
   }
 
   const realSpeakers: Speaker[] = rawSpeakers.map((s) => ({
-    id: s.speaker_id,
+    id: Number(s.speaker_id),
     name: s.full_name,
     title: s.title,
     talkTitle: s.talk_title || "To Be Announced",

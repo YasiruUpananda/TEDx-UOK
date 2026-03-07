@@ -3,7 +3,7 @@ import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 
 export interface Speaker {
-  id: string;
+  id: number;
   name: string;
   title: string;
   talkTitle: string;

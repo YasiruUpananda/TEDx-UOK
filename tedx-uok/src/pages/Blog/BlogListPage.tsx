@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useBlog } from '../../hooks/useBlog';
 import { BlogCard } from '../../components/blog/BlogCard';
 import { FeaturedPost } from '../../components/blog/FeaturedPost';

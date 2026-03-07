@@ -135,9 +135,7 @@ const PressMedia = () => {
         <section className="mb-20">
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                Press Kit & Assets
-              </h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Press Kit & Assets</h2>
               <p className="text-gray-400 max-w-2xl">
                 Download official media resources, logos, and event information.
                 All assets are licensed for press use.
@@ -183,9 +181,7 @@ const PressMedia = () => {
 
         {/* Event Brief Section */}
         <section className="mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-10">
-            Event Brief
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-10">Event Brief</h2>
 
           <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl p-6 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -266,9 +262,7 @@ const PressMedia = () => {
 
         {/* Media Contact Section */}
         <section className="mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-10">
-            Media Contact
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-10">Media Contact</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {mediaContacts.map((contact) => (
@@ -299,9 +293,7 @@ const PressMedia = () => {
 
           {/* Social Media */}
           <div className="mt-12 pt-10 border-t border-[#1F1F1F]">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Follow & Share
-            </h3>
+            <h3 className="text-2xl font-bold text-white mb-6">Follow & Share</h3>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6">
               {socialMedia.map((social) => (
                 <a
@@ -312,9 +304,7 @@ const PressMedia = () => {
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 group bg-[#1F1F1F]/30 px-4 py-2 rounded-full sm:bg-transparent sm:px-0 sm:py-0"
                 >
                   <social.icon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-[#EB0028] transition-colors duration-300" />
-                  <span className="font-medium text-sm sm:text-base">
-                    {social.platform}
-                  </span>
+                  <span className="font-medium text-sm sm:text-base">{social.platform}</span>
                 </a>
               ))}
             </div>
@@ -323,9 +313,7 @@ const PressMedia = () => {
 
         {/* Quick Facts Section */}
         <section className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl p-6 md:p-8 mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8">
-            Quick Facts
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8">Quick Facts</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -352,9 +340,7 @@ const PressMedia = () => {
 
         {/* Call to Action */}
         <section className="text-center border-t border-[#1F1F1F] pt-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
-            Need Something Else?
-          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">Need Something Else?</h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
             For interview requests, special access, or custom media packages,
             please reach out to our press team.
