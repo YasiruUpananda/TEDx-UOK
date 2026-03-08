@@ -4,6 +4,7 @@ import { FormSelect } from "../../components/forms/FormSelect";
 import { SubmitButton } from "../../components/forms/SubmitButton";
 import { FormMessage } from "../../components/forms/FormMessage";
 import { supabase } from "../../lib/supabase";
+import { Helmet } from "react-helmet-async";
 
 interface RegistrationFormData {
   full_name: string;
@@ -252,6 +253,10 @@ export const RegistrationPage: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full bg-black text-white">
+      <Helmet>
+        <title>Community Registration | TEDx University of Kelaniya</title>
+        <meta name="description" content="Register to attend TEDx University of Kelaniya and secure your spot for a day of inspiring talks and networking." />
+      </Helmet>
       <div className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto w-full">
           <div className="text-center mb-12">

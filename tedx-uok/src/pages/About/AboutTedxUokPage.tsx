@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
 
 export default function AboutTedxUokPage() {
   const currentTheme = "The Ripple Effect";
@@ -7,6 +8,10 @@ export default function AboutTedxUokPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-20">
+      <Helmet>
+        <title>About TEDx UOK | TEDx University of Kelaniya</title>
+        <meta name="description" content="Discover the mission and story of TEDxUOK, spreading ideas worth sharing at the University of Kelaniya." />
+      </Helmet>
       {/* Hero Section */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">

@@ -20,11 +20,9 @@ interface FormErrors {
   category?: string;
 }
 
-import { useSEO } from "../../hooks/useSEO";
-import { seoConfig } from "../../config/seo";
+import { Helmet } from "react-helmet-async";
 
 export const ContactPage: React.FC = () => {
-  useSEO(seoConfig.contact);
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -179,6 +177,10 @@ export const ContactPage: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us | TEDx University of Kelaniya</title>
+        <meta name="description" content="Get in touch with the TEDx University of Kelaniya team for inquiries, sponsorships, and more." />
+      </Helmet>
       <style>{`
         body, html, #root {
           background-color:  #000000 !important;

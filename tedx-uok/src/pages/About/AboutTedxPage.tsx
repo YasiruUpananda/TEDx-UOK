@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Check, ChevronLeft, ExternalLink, X } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
 
 export default function AboutTedxPage() {
   return (
     <div className="min-h-screen bg-background text-foreground pt-20">
+      <Helmet>
+        <title>About TEDx | TEDx University of Kelaniya</title>
+        <meta name="description" content="Learn about the TEDx program, licensing, and how it differs from traditional TED conferences." />
+      </Helmet>
       {/* Hero Section */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">

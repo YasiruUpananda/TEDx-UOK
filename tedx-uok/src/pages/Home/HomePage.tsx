@@ -7,7 +7,7 @@ import { usePartners } from "../../hooks/usePartners";
 import { useSettings } from "../../hooks/useSettings";
 
 // Import Components
-import SEO from "../../components/home/SEO";
+import { Helmet } from "react-helmet-async";
 import About from "../../components/home/About";
 import Countdown from "../../components/home/Countdown";
 import CTASection from "../../components/home/CTASection";
@@ -76,10 +76,10 @@ const HomePage = () => {
 
   return (
     <>
-      <SEO
-        eventName={eventName}
-        description={`Join us at ${eventName}: ${eventTheme}. ${eventDesc}`}
-      />
+      <Helmet>
+        <title>TEDx University of Kelaniya | Ideas Worth Spreading</title>
+        <meta name="description" content={`Join us at ${eventName}: ${eventTheme}. ${eventDesc}`} />
+      </Helmet>
       <div className="min-h-screen bg-background relative top-[-65px]">
         <Hero
           date={eventDate}
