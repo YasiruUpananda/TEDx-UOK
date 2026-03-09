@@ -4,13 +4,15 @@ import { FormSelect } from "../../components/forms/FormSelect";
 import { FormTextarea } from "../../components/forms/FormTextarea";
 import { SubmitButton } from "../../components/forms/SubmitButton";
 import { FormMessage } from "../../components/forms/FormMessage";
-import { supabase } from "../../lib/supabase";
+// FormSubmit.io endpoint for email delivery
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/tedxuok26.2@gmail.com";
 
 interface ContactFormData {
   name: string;
   email: string;
   message: string;
   category: string;
+  honeypot: string;
 }
 
 interface FormErrors {
@@ -30,6 +32,7 @@ export const ContactPage: React.FC = () => {
     email: "",
     message: "",
     category: "",
+    honeypot: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -117,6 +120,24 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     setSubmitMessage(null);
 
+    // Honeypot spam detection: if field is filled, it's a bot
+    if (formData.honeypot.trim() !== "") {
+      console.warn("Spam detected: honeypot field was filled");
+      // Silently succeed to not alert bots, but don't send email
+      setSubmitMessage({
+        type: "success",
+        text: "Thank you for contacting us! We will get back to you soon.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+        category: "",
+        honeypot: "",
+      });
+      return;
+    }
+
     if (!validateForm()) {
       setSubmitMessage({
         type: "error",
@@ -128,30 +149,36 @@ export const ContactPage: React.FC = () => {
     setLoading(true);
 
     try {
-      // Insert contact message into Supabase
-      const { data, error } = await supabase
-        .from("contact_messages")
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            category: formData.category || null,
-            message: formData.message,
-            status: "New",
-          },
-        ])
-        .select();
+      // Create FormData for FormSubmit.io with professional formatting
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("category", formData.category || "General Inquiry");
+      form.append("message", formData.message);
+      
+      // Professional email configuration
+      form.append("_subject", `New Contact Form Submission from ${formData.name}`);
+      form.append("_replyto", formData.email);
+      form.append("_captcha", "false");
+      form.append("_template", "table");
 
-      if (error) {
-        console.error("Supabase error:", error);
-        setSubmitMessage({
-          type: "error",
-          text: error.message || "Failed to send message. Please try again.",
-        });
-        return;
+      // Submit to FormSubmit.io
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        body: form,
+      });
+
+      // Log response for debugging
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("FormSubmit error response:", errorText);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      console.log("Contact message submitted:", data);
+      console.log("Contact message sent successfully via FormSubmit.io");
 
       setSubmitMessage({
         type: "success",
@@ -164,13 +191,16 @@ export const ContactPage: React.FC = () => {
         email: "",
         message: "",
         category: "",
+        honeypot: "",
       });
       setErrors({});
     } catch (error) {
-      console.error("Contact form error:", error);
+      console.error("Contact form submission error:", error);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error("Detailed error:", errorMessage);
       setSubmitMessage({
         type: "error",
-        text: "Something went wrong. Please try again.",
+        text: "Something went wrong sending your message. Please try again or email us directly at tedxuok26.2@gmail.com",
       });
     } finally {
       setLoading(false);
@@ -246,7 +276,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl sm:rounded-2xl p-6 sm:p-8">
-              {submitMessage && (
+              {submitMessage?.type === 'success' && (
                 <div className="mb-6">
                   <FormMessage
                     type={submitMessage.type}
@@ -257,6 +287,17 @@ export const ContactPage: React.FC = () => {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field for spam detection - hidden from users */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={(e) => handleChange("honeypot", e.target.value)}
+                  style={{ display: "none" }}
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
                 <FormInput
                   label="Name"
                   name="name"
