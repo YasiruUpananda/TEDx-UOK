@@ -86,8 +86,8 @@ const HomePage = () => {
         <About description={eventDesc} />
         <Highlights />
         <ThemePreview theme={eventTheme} description={eventDesc} />
-        <Speakers speakers={realSpeakers} />
-        <Partners partners={realPartners} />
+        {/* <Speakers speakers={realSpeakers} /> */}
+        {/* <Partners partners={realPartners} /> */}
         <CTASection ctaLabel={ctaLabel} ctaLink={ctaLink} />
       </div>
     </>

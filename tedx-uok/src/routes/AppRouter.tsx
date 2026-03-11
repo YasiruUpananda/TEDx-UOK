@@ -124,7 +124,8 @@ function AnimatedRoutes() {
         path="/partners"
         element={
           <div key={location.pathname} className="page-transition">
-            <PartnersPage />
+            <ComingSoon />
+            {/* <PartnersPage /> */}
           </div>
         }
       />
